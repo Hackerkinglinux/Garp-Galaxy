@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Piece - Futurística</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #000;
             color: #fff;
             margin: 0;
@@ -111,6 +113,35 @@
         body.light-theme button {
             background-color: #ccc;
             color: #000;
+        }
+
+        /* Animaciones y transiciones */
+        section {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .parallax {
+            background-image: url('https://wallpaperaccess.com/full/1267589.jpg');
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            header, footer {
+                text-align: center;
+            }
         }
     </style>
 </head>
