@@ -4,7 +4,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Piece - Futurística</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: url('one-piece-fondo.png') no-repeat center center fixed;
+            background-size: cover;
+            animation: moveBackground 60s linear infinite;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #0f0;
+            transform: scale(1.1);
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: #0f0;
+        }
+
+        a {
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        a:hover {
+            color: #0f0;
+            transform: scale(1.1);
+        }
+
+        button {
+            background-color: #222;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0f0;
+            transform: scale(1.1);
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 0; }
+        }
+
+        /* Tema oscuro/claro */
+        body.light-theme {
+            background-color: #fff;
+            color: #000;
+        }
+
+        body.light-theme header, body.light-theme footer {
+            background-color: #ddd;
+        }
+
+        body.light-theme nav ul {
+            background-color: #ccc;
+        }
+
+        body.light-theme nav ul li a {
+            color: #000;
+        }
+
+        body.light-theme button {
+            background-color: #ccc;
+            color: #000;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -66,6 +174,52 @@
         Tu navegador no soporta el elemento de audio.
     </audio>
     
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+        });
+
+        // Ejemplo de notificación push (requiere HTTPS y permiso del usuario)
+        if ('Notification' in window && navigator.serviceWorker) {
+            navigator.serviceWorker.register('sw.js').then(function(registration) {
+                console.log('Service Worker registrado con éxito:', registration);
+            }).catch(function(error) {
+                console.error('Error al registrar el Service Worker:', error);
+            });
+        }
+
+        function mostrarNotificacion() {
+            if (Notification.permission === 'granted') {
+                navigator.serviceWorker.ready.then(function(registration) {
+                    registration.showNotification('¡Nuevo episodio de One Piece disponible!', {
+                        body: 'Haz clic aquí para verlo ahora.',
+                        icon: 'https://example.com/icon.png',
+                        tag: 'one-piece-notification'
+                    });
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+                Notification.requestPermission();
+            }
+            // Simulación de notificación después de 10 segundos
+            setTimeout(mostrarNotificacion, 10000);
+        });
+
+        // Controles de audio
+        let audioElement = document.getElementById('backgroundMusic');
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                if (audioElement.paused) {
+                    audioElement.play();
+                } else {
+                    audioElement.pause();
+                }
+            }
+        });
+    </script>
 </body>
 </html>
