@@ -253,13 +253,13 @@
             <h2>Anime</h2>
             <div class="episode-row">
                 <div class="episode">
-                    <img src="Episodios1.jpg" alt="Episode 1">
+                    <img src="episode1.jpg" alt="Episode 1">
                 </div>
                 <div class="episode">
-                    <img src="Episodios2.jpg" alt="Episode 2">
+                    <img src="episode2.jpg" alt="Episode 2">
                 </div>
                 <div class="episode">
-                    <img src="Episodios3.jpg" alt="Episode 3">
+                    <img src="episode3.jpg" alt="Episode 3">
                 </div>
                 <!-- Agrega más episodios aquí -->
             </div>
@@ -292,6 +292,7 @@
 
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('menu').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Deshabilitar el desplazamiento
         });
 
         document.getElementById('playPauseBtn').addEventListener('click', function() {
@@ -302,6 +303,15 @@
             } else {
                 audio.pause();
                 this.textContent = 'Reproducir';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            const menu = document.getElementById('menu');
+            const menuToggle = document.getElementById('menuToggle');
+            if (menu.style.display === 'flex' && !menu.contains(event.target) && event.target !== menuToggle) {
+                menu.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Volver a habilitar el desplazamiento
             }
         });
     </script>
