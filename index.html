@@ -252,6 +252,7 @@
         <section id="anime">
             <h2>Anime</h2>
             <div class="episode-row">
+                <!-- Lista de episodios de One Piece -->
                 <div class="episode">
                     <img src="Episodios1.jpg" alt="Episode 1">
                 </div>
@@ -266,10 +267,43 @@
         </section>
         <section id="descargas">
             <h2>Descargas</h2>
+            <!-- Botones de descarga -->
             <button>Descargar Episodio 1</button>
             <button>Descargar Episodio 2</button>
             <button>Descargar Episodio 3</button>
             <!-- Agrega más botones de descarga aquí -->
+        </section>
+        <section id="galeria">
+            <h2>Galería</h2>
+            <!-- Galería de imágenes -->
+            <div class="episode-row">
+                <div class="episode">
+                    <img src="one-piece-fondo.png" alt="Galería 1">
+                </div>
+                <div class="episode">
+                    <img src="one-piece-fondo.png" alt="Galería 2">
+                </div>
+                <div class="episode">
+                    <img src="one-piece-fondo.png" alt="Galería 3">
+                </div>
+                <!-- Agrega más imágenes aquí -->
+            </div>
+        </section>
+        <section id="noticias">
+            <h2>Noticias</h2>
+            <!-- Widget de noticias -->
+            <div class="news-widget">
+                <p>Últimas noticias de One Piece...</p>
+                <!-- Agrega noticias aquí -->
+            </div>
+        </section>
+        <section id="perfil">
+            <h2>Perfil</h2>
+            <!-- Sección de perfil de usuario -->
+            <div class="user-profile">
+                <p>Bienvenido, Usuario</p>
+                <button>Editar Perfil</button>
+            </div>
         </section>
         <div class="music-player">
             <h2>Reproduciendo: One Piece Theme</h2>
@@ -292,7 +326,6 @@
 
         document.getElementById('menuToggle').addEventListener('click', function() {
             document.getElementById('menu').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // Deshabilitar el desplazamiento
         });
 
         document.getElementById('playPauseBtn').addEventListener('click', function() {
@@ -308,10 +341,8 @@
 
         document.addEventListener('click', function(event) {
             const menu = document.getElementById('menu');
-            const menuToggle = document.getElementById('menuToggle');
-            if (menu.style.display === 'flex' && !menu.contains(event.target) && event.target !== menuToggle) {
+            if (!menu.contains(event.target) && event.target.id !== 'menuToggle') {
                 menu.style.display = 'none';
-                document.body.style.overflow = 'auto'; // Volver a habilitar el desplazamiento
             }
         });
     </script>
