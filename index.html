@@ -31,29 +31,80 @@
             text-shadow: 0 0 10px #0f0;
         }
 
+        nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s forwards;
+        }
+
         nav ul {
             list-style: none;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            background-color: #000;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 20px 0;
         }
 
         nav ul li a {
             color: #0f0;
             text-decoration: none;
-            transition: color 0.3s, transform 0.3s;
+            font-size: 1.5em;
             text-shadow: 0 0 5px #0f0;
+            transition: color 0.3s, transform 0.3s;
         }
 
         nav ul li a:hover {
             color: #fff;
             transform: scale(1.1);
+        }
+
+        #menuToggle {
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px #0f0;
+            border-radius: 5px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        #menuToggle:hover {
+            background-color: #fff;
+            transform: scale(1.1);
+        }
+
+        #loader {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid #0f0;
+            border-top: 5px solid #000;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            z-index: 1002;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
         main {
@@ -75,6 +126,31 @@
             border-radius: 10px;
         }
 
+        .episode-row {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .episode {
+            margin: 10px;
+            border: 2px solid #0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0f0;
+            transition: transform 0.3s;
+        }
+
+        .episode:hover {
+            transform: scale(1.1);
+        }
+
+        .episode img {
+            border-radius: 10px;
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
         footer {
             background: linear-gradient(to right, #00f, #0f0);
             padding: 20px;
@@ -87,7 +163,11 @@
             margin: 0;
         }
 
-        button {
+        .music-player {
+            margin-top: 20px;
+        }
+
+        .music-player button {
             background-color: #0f0;
             color: #000;
             border: none;
@@ -98,15 +178,14 @@
             border-radius: 5px;
         }
 
-        button:hover {
+        .music-player button:hover {
             background-color: #fff;
             transform: scale(1.1);
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 5px #0f0; }
-            50% { text-shadow: 0 0 20px #0f0; }
-            100% { text-shadow: 0 0 5px #0f0; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @media (max-width: 600px) {
@@ -121,55 +200,47 @@
     </style>
 </head>
 <body>
+    <div id="loader"></div>
     <header>
         <h1>One Piece - Futurística</h1>
-        <button id="themeToggle">Tema Oscuro/Claro</button>
+        <button id="menuToggle">Menú</button>
     </header>
-    <nav>
+    <nav id="menu">
         <ul>
             <li><a href="#anime">Anime</a></li>
-            <li><a href="#peliculas">Películas</a></li>
-            <li><a href="#ovas">OVAs</a></li>
             <li><a href="#descargas">Descargas</a></li>
             <li><a href="#galeria">Galería</a></li>
             <li><a href="#noticias">Noticias</a></li>
             <li><a href="#perfil">Perfil</a></li>
-            <li><a href="#chat">Chat</a></li>
         </ul>
     </nav>
     <main>
         <section id="anime">
             <h2>Anime</h2>
-            <!-- Lista de episodios -->
-        </section>
-        <section id="peliculas">
-            <h2>Películas</h2>
-            <!-- Lista de películas -->
-        </section>
-        <section id="ovas">
-            <h2>OVAs</h2>
-            <!-- Lista de OVAs -->
+            <div class="episode-row">
+                <div class="episode">
+                    <img src="Episodios1.jpg" alt="Episode">
+                </div>
+                <div class="episode">
+                    <img src="Episodios2.jpg" alt="Episode">
+                </div>
+                <div class="episode">
+                    <img src="Episodios3.jpg" alt="Episode">
+                </div>
+                <!-- Agrega más episodios aquí -->
+            </div>
         </section>
         <section id="descargas">
             <h2>Descargas</h2>
-            <!-- Sección de descargas -->
+            <button>Descargar Episodio 1</button>
+            <button>Descargar Episodio 2</button>
+            <button>Descargar Episodio 3</button>
+            <!-- Agrega más botones de descarga aquí -->
         </section>
-        <section id="galeria">
-            <h2>Galería</h2>
-            <!-- Galería de imágenes -->
-        </section>
-        <section id="noticias">
-            <h2>Noticias</h2>
-            <!-- Sección de noticias -->
-        </section>
-        <section id="perfil">
-            <h2>Perfil</h2>
-            <!-- Perfil de usuario -->
-        </section>
-        <section id="chat">
-            <h2>Chat en Vivo</h2>
-            <!-- Chat en vivo -->
-        </section>
+        <div class="music-player">
+            <h2>Reproduciendo: One Piece Theme</h2>
+            <button id="playPauseBtn">Pausar</button>
+        </div>
     </main>
     <footer>
         <p>&copy; 2024 One Piece - Futurística. Creado por el gran Bender.</p>
@@ -181,50 +252,29 @@
     </audio>
     
     <script>
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            document.body.classList.toggle('light-theme');
-        });
-
-        // Ejemplo de notificación push (requiere HTTPS y permiso del usuario)
-        if ('Notification' in window && navigator.serviceWorker) {
-            navigator.serviceWorker.register('sw.js').then(function(registration) {
-                console.log('Service Worker registrado con éxito:', registration);
-            }).catch(function(error) {
-                console.error('Error al registrar el Service Worker:', error);
-            });
-        }
-
-        function mostrarNotificacion() {
-            if (Notification.permission === 'granted') {
-                navigator.serviceWorker.ready.then(function(registration) {
-                    registration.showNotification('¡Nuevo episodio de One Piece disponible!', {
-                        body: 'Haz clic aquí para verlo ahora.',
-                        icon: 'logo-sama.png',
-                        tag: 'one-piece-notification'
-                    });
-                });
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-                Notification.requestPermission();
-            }
-            // Simulación de notificación después de 10 segundos
-            setTimeout(mostrarNotificacion, 10000);
-        });
+            const loader = document.getElementById('loader');
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 3000); // Oculta el loader después de 3 segundos
 
-        // Controles de audio
-        let audioElement = document.getElementById('backgroundMusic');
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+            menuToggle.addEventListener('click', () => {
+                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+            });
 
-        document.addEventListener('keydown', function(event) {
-            if (event.code === 'Space') {
+            const audioElement = document.getElementById('backgroundMusic');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            playPauseBtn.addEventListener('click', () => {
                 if (audioElement.paused) {
                     audioElement.play();
+                    playPauseBtn.textContent = 'Pausar';
                 } else {
                     audioElement.pause();
+                    playPauseBtn.textContent = 'Reproducir';
                 }
-            }
+            });
         });
     </script>
 </body>
