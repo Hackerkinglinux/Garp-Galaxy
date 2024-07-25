@@ -5,26 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>One Piece - Futurística</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Orbitron', sans-serif;
             background-color: #000;
-            color: #fff;
+            color: #0f0;
             margin: 0;
             padding: 0;
-            background: url('one-piece-fondo.png') no-repeat center center fixed;
-            background-size: cover;
-            animation: moveBackground 60s linear infinite;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px;
+            background: linear-gradient(to right, #0f0, #00f);
+            padding: 20px;
             text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+            position: relative;
+        }
+
+        header h1 {
+            color: #fff;
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 0 0 10px #0f0;
         }
 
         nav ul {
@@ -32,7 +36,8 @@
             padding: 0;
             display: flex;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #000;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
         }
 
         nav ul li {
@@ -40,98 +45,68 @@
         }
 
         nav ul li a {
-            color: #fff;
+            color: #0f0;
             text-decoration: none;
             transition: color 0.3s, transform 0.3s;
+            text-shadow: 0 0 5px #0f0;
         }
 
         nav ul li a:hover {
-            color: #0f0;
+            color: #fff;
             transform: scale(1.1);
         }
 
         main {
             padding: 20px;
+            text-align: center;
+            background-color: #111;
+        }
+
+        main h2 {
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+            border-radius: 10px;
         }
 
         footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px;
+            background: linear-gradient(to right, #00f, #0f0);
+            padding: 20px;
             text-align: center;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
         }
 
-        h1, h2 {
-            color: #0f0;
-        }
-
-        a {
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        a:hover {
-            color: #0f0;
-            transform: scale(1.1);
+        footer p {
+            color: #fff;
+            margin: 0;
         }
 
         button {
-            background-color: #222;
-            color: #fff;
+            background-color: #0f0;
+            color: #000;
             border: none;
-            padding: 10px;
+            padding: 10px 20px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px #0f0;
+            border-radius: 5px;
         }
 
         button:hover {
-            background-color: #0f0;
+            background-color: #fff;
             transform: scale(1.1);
         }
 
-        @keyframes moveBackground {
-            0% { background-position: 0 0; }
-            100% { background-position: 100% 0; }
-        }
-
-        /* Tema oscuro/claro */
-        body.light-theme {
-            background-color: #fff;
-            color: #000;
-        }
-
-        body.light-theme header, body.light-theme footer {
-            background-color: #ddd;
-        }
-
-        body.light-theme nav ul {
-            background-color: #ccc;
-        }
-
-        body.light-theme nav ul li a {
-            color: #000;
-        }
-
-        body.light-theme button {
-            background-color: #ccc;
-            color: #000;
-        }
-
-        /* Animaciones y transiciones */
-        section {
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .parallax {
-            background-image: url('one-piece-fondo.png');
-            min-height: 500px;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #0f0; }
+            50% { text-shadow: 0 0 20px #0f0; }
+            100% { text-shadow: 0 0 5px #0f0; }
         }
 
         @media (max-width: 600px) {
@@ -224,7 +199,7 @@
                 navigator.serviceWorker.ready.then(function(registration) {
                     registration.showNotification('¡Nuevo episodio de One Piece disponible!', {
                         body: 'Haz clic aquí para verlo ahora.',
-                        icon: 'https://example.com/icon.png',
+                        icon: 'logo-sama.png',
                         tag: 'one-piece-notification'
                     });
                 });
