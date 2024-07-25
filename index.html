@@ -31,7 +31,7 @@
             text-shadow: 0 0 10px #0f0;
         }
 
-        #menuToggle {
+        #menuToggle, #registerBtn, #loginBtn {
             background-color: #0f0;
             color: #000;
             border: none;
@@ -42,11 +42,22 @@
             border-radius: 5px;
             position: fixed;
             top: 20px;
-            right: 20px;
             z-index: 1001;
         }
 
-        #menuToggle:hover {
+        #menuToggle {
+            right: 20px;
+        }
+
+        #registerBtn {
+            right: 150px;
+        }
+
+        #loginBtn {
+            right: 280px;
+        }
+
+        #menuToggle:hover, #registerBtn:hover, #loginBtn:hover {
             background-color: #fff;
             transform: scale(1.1);
         }
@@ -231,6 +242,65 @@
                 text-align: center;
             }
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #111;
+            border: 1px solid #0f0;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+
+        .modal-content h2 {
+            color: #0f0;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #0f0;
+            border-radius: 5px;
+            background: #000;
+            color: #0f0;
+        }
+
+        .modal-content button {
+            background-color: #0f0;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 0 10px #0f0;
+            border-radius: 5px;
+        }
+
+        .modal-content button:hover {
+            background-color: #fff;
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -238,111 +308,129 @@
     <header>
         <h1>One Piece - Futurística</h1>
         <button id="menuToggle">Menú</button>
+        <button id="registerBtn">Registrarse</button>
+        <button id="loginBtn">Iniciar Sesión</button>
     </header>
     <nav id="menu">
         <ul>
-            <li><a href="#anime">Anime</a></li>
-            <li><a href="#descargas">Descargas</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#noticias">Noticias</a></li>
-            <li><a href="#perfil">Perfil</a></li>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Episodios</a></li>
+            <li><a href="#">Películas</a></li>
+            <li><a href="#">Personajes</a></li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Foro</a></li>
+            <li><a href="#">Juegos</a></li>
+            <li><a href="#">Perfil</a></li>
         </ul>
     </nav>
     <main>
-        <section id="anime">
-            <h2>Anime</h2>
-            <div class="episode-row">
-                <!-- Lista de episodios de One Piece -->
-                <div class="episode">
-                    <img src="Episodios1.jpg" alt="Episode 1">
-                </div>
-                <div class="episode">
-                    <img src="Episodios2.jpg" alt="Episode 2">
-                </div>
-                <div class="episode">
-                    <img src="Episodios3.jpg" alt="Episode 3">
-                </div>
-                <!-- Agrega más episodios aquí -->
-            </div>
-        </section>
-        <section id="descargas">
-            <h2>Descargas</h2>
-            <!-- Botones de descarga -->
-            <button>Descargar Episodio 1</button>
-            <button>Descargar Episodio 2</button>
-            <button>Descargar Episodio 3</button>
-            <!-- Agrega más botones de descarga aquí -->
-        </section>
-        <section id="galeria">
-            <h2>Galería</h2>
-            <!-- Galería de imágenes -->
+        <h2>Bienvenido a la web futurística de One Piece</h2>
+        <section>
+            <h3>Últimos Episodios</h3>
             <div class="episode-row">
                 <div class="episode">
-                    <img src="one-piece-fondo.png" alt="Galería 1">
+                    <img src="https://via.placeholder.com/150" alt="Episodio 1">
                 </div>
                 <div class="episode">
-                    <img src="one-piece-fondo.png" alt="Galería 2">
+                    <img src="https://via.placeholder.com/150" alt="Episodio 2">
                 </div>
                 <div class="episode">
-                    <img src="one-piece-fondo.png" alt="Galería 3">
+                    <img src="https://via.placeholder.com/150" alt="Episodio 3">
                 </div>
-                <!-- Agrega más imágenes aquí -->
+                <div class="episode">
+                    <img src="https://via.placeholder.com/150" alt="Episodio 4">
+                </div>
             </div>
         </section>
-        <section id="noticias">
-            <h2>Noticias</h2>
-            <!-- Widget de noticias -->
-            <div class="news-widget">
-                <p>Últimas noticias de One Piece...</p>
-                <!-- Agrega noticias aquí -->
-            </div>
-        </section>
-        <section id="perfil">
-            <h2>Perfil</h2>
-            <!-- Sección de perfil de usuario -->
-            <div class="user-profile">
-                <p>Bienvenido, Usuario</p>
-                <button>Editar Perfil</button>
-            </div>
-        </section>
-        <div class="music-player">
-            <h2>Reproduciendo: One Piece Theme</h2>
-            <button id="playPauseBtn">Pausar</button>
-        </div>
     </main>
     <footer>
-        <p>&copy; 2024 One Piece - Futurística. Creado por el gran Bender.</p>
+        <p>&copy; 2024 One Piece Futurística. Todos los derechos reservados.</p>
+        <div class="music-player">
+            <button id="playMusicBtn">Reproducir Música</button>
+            <audio id="backgroundMusic" loop>
+                <source src="tu_musica.mp3" type="audio/mpeg">
+            </audio>
+        </div>
     </footer>
-    
-    <audio id="backgroundMusic" autoplay loop>
-        <source src="one-piece-theme.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
-    
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeRegister">&times;</span>
+            <h2>Registro</h2>
+            <form id="registerForm">
+                <input type="text" id="registerName" placeholder="Nombre" required>
+                <input type="email" id="registerEmail" placeholder="Correo Electrónico" required>
+                <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                <input type="password" id="registerConfirmPassword" placeholder="Confirmar Contraseña" required>
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Inicio de Sesión -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Correo Electrónico" required>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </form>
+        </div>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('load', function() {
             document.getElementById('loader').style.display = 'none';
         });
 
         document.getElementById('menuToggle').addEventListener('click', function() {
-            document.getElementById('menu').style.display = 'flex';
-        });
-
-        document.getElementById('playPauseBtn').addEventListener('click', function() {
-            let audio = document.getElementById('backgroundMusic');
-            if (audio.paused) {
-                audio.play();
-                this.textContent = 'Pausar';
+            var menu = document.getElementById('menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
             } else {
-                audio.pause();
-                this.textContent = 'Reproducir';
+                menu.style.display = 'flex';
             }
         });
 
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            document.getElementById('registerModal').style.display = 'flex';
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'flex';
+        });
+
+        document.getElementById('closeRegister').addEventListener('click', function() {
+            document.getElementById('registerModal').style.display = 'none';
+        });
+
+        document.getElementById('closeLogin').addEventListener('click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+
         document.addEventListener('click', function(event) {
-            const menu = document.getElementById('menu');
-            if (!menu.contains(event.target) && event.target.id !== 'menuToggle') {
-                menu.style.display = 'none';
+            var registerModal = document.getElementById('registerModal');
+            var loginModal = document.getElementById('loginModal');
+            if (event.target == registerModal) {
+                registerModal.style.display = 'none';
+            }
+            if (event.target == loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+
+        document.getElementById('playMusicBtn').addEventListener('click', function() {
+            var audio = document.getElementById('backgroundMusic');
+            if (audio.paused) {
+                audio.play();
+                this.textContent = 'Pausar Música';
+            } else {
+                audio.pause();
+                this.textContent = 'Reproducir Música';
             }
         });
     </script>
