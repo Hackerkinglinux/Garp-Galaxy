@@ -31,43 +31,6 @@
             text-shadow: 0 0 10px #0f0;
         }
 
-        nav {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            animation: fadeIn 1s forwards;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 20px 0;
-        }
-
-        nav ul li a {
-            color: #0f0;
-            text-decoration: none;
-            font-size: 1.5em;
-            text-shadow: 0 0 5px #0f0;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #fff;
-            transform: scale(1.1);
-        }
-
         #menuToggle {
             background-color: #0f0;
             color: #000;
@@ -86,6 +49,77 @@
         #menuToggle:hover {
             background-color: #fff;
             transform: scale(1.1);
+        }
+
+        nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 1s forwards;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 20px;
+            position: relative;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0f0;
+            padding: 20px;
+            width: 150px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        nav ul li:before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #0f0;
+            border-radius: 15px;
+            transform: rotate(45deg);
+            transition: transform 0.3s, opacity 0.3s;
+            opacity: 0.5;
+        }
+
+        nav ul li:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul li:hover:before {
+            transform: rotate(0deg);
+            opacity: 1;
+        }
+
+        nav ul li a {
+            color: #0f0;
+            text-decoration: none;
+            font-size: 1.2em;
+            text-shadow: 0 0 5px #0f0;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
         }
 
         #loader {
@@ -219,13 +253,13 @@
             <h2>Anime</h2>
             <div class="episode-row">
                 <div class="episode">
-                    <img src="Episodios1.jpg" alt="Episode">
+                    <img src="Episodios1.jpg" alt="Episode 1">
                 </div>
                 <div class="episode">
-                    <img src="Episodios2.jpg" alt="Episode">
+                    <img src="Episodios2.jpg" alt="Episode 2">
                 </div>
                 <div class="episode">
-                    <img src="Episodios3.jpg" alt="Episode">
+                    <img src="Episodios3.jpg" alt="Episode 3">
                 </div>
                 <!-- Agrega más episodios aquí -->
             </div>
@@ -253,28 +287,22 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 3000); // Oculta el loader después de 3 segundos
+            document.getElementById('loader').style.display = 'none';
+        });
 
-            const menuToggle = document.getElementById('menuToggle');
-            const menu = document.getElementById('menu');
-            menuToggle.addEventListener('click', () => {
-                menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-            });
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('menu').style.display = 'flex';
+        });
 
-            const audioElement = document.getElementById('backgroundMusic');
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            playPauseBtn.addEventListener('click', () => {
-                if (audioElement.paused) {
-                    audioElement.play();
-                    playPauseBtn.textContent = 'Pausar';
-                } else {
-                    audioElement.pause();
-                    playPauseBtn.textContent = 'Reproducir';
-                }
-            });
+        document.getElementById('playPauseBtn').addEventListener('click', function() {
+            let audio = document.getElementById('backgroundMusic');
+            if (audio.paused) {
+                audio.play();
+                this.textContent = 'Pausar';
+            } else {
+                audio.pause();
+                this.textContent = 'Reproducir';
+            }
         });
     </script>
 </body>
