@@ -1,45 +1,50 @@
-document.getElementById('themeToggle').addEventListener('click', function() {
-    document.body.classList.toggle('light-theme');
+window.addEventListener('load', function() {
+    document.getElementById('loader').style.display = 'none';
 });
 
-// Ejemplo de notificación push (requiere HTTPS y permiso del usuario)
-if ('Notification' in window && navigator.serviceWorker) {
-    navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('Service Worker registrado con éxito:', registration);
-    }).catch(function(error) {
-        console.error('Error al registrar el Service Worker:', error);
-    });
-}
-
-function mostrarNotificacion() {
-    if (Notification.permission === 'granted') {
-        navigator.serviceWorker.ready.then(function(registration) {
-            registration.showNotification('¡Nuevo episodio de One Piece disponible!', {
-                body: 'Haz clic aquí para verlo ahora.',
-                icon: 'https://example.com/icon.png',
-                tag: 'one-piece-notification'
-            });
-        });
+document.getElementById('menuToggle').addEventListener('click', function() {
+    var menu = document.getElementById('menu');
+    if (menu.style.display === 'flex') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'flex';
     }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (Notification.permission !== 'granted' && Notification.permission !== 'denied') {
-        Notification.requestPermission();
-    }
-    // Simulación de notificación después de 10 segundos
-    setTimeout(mostrarNotificacion, 10000);
 });
 
-// Controles de audio
-let audioElement = document.getElementById('backgroundMusic');
+document.getElementById('registerBtn').addEventListener('click', function() {
+    document.getElementById('registerModal').style.display = 'flex';
+});
 
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'Space') {
-        if (audioElement.paused) {
-            audioElement.play();
-        } else {
-            audioElement.pause();
-        }
+document.getElementById('loginBtn').addEventListener('click', function() {
+    document.getElementById('loginModal').style.display = 'flex';
+});
+
+document.getElementById('closeRegister').addEventListener('click', function() {
+    document.getElementById('registerModal').style.display = 'none';
+});
+
+document.getElementById('closeLogin').addEventListener('click', function() {
+    document.getElementById('loginModal').style.display = 'none';
+});
+
+document.addEventListener('click', function(event) {
+    var registerModal = document.getElementById('registerModal');
+    var loginModal = document.getElementById('loginModal');
+    if (event.target == registerModal) {
+        registerModal.style.display = 'none';
+    }
+    if (event.target == loginModal) {
+        loginModal.style.display = 'none';
+    }
+});
+
+document.getElementById('playMusicBtn').addEventListener('click', function() {
+    var audio = document.getElementById('backgroundMusic');
+    if (audio.paused) {
+        audio.play();
+        this.textContent = 'Pausar Música';
+    } else {
+        audio.pause();
+        this.textContent = 'Reproducir Música';
     }
 });
